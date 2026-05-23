@@ -6,36 +6,39 @@ import { MagneticWrapper } from "@/components/ui/magnetic-wrapper";
 import { GraduationCap, Lock, BookOpen, Wrench, Code2, FileText } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-
-const features = [
-  {
-    icon: <Lock className="w-4 h-4 sm:w-5 sm:h-5" />,
-    title: "Privasi & Kerahasiaan Aman 100%",
-    subtitle: undefined,
-  },
-  {
-    icon: <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />,
-    title: "Penjelasan Baris Kode Lengkap",
-    subtitle: "Diajarkan sampai paham",
-  },
-  {
-    icon: <Wrench className="w-4 h-4 sm:w-5 sm:h-5" />,
-    title: "Fasilitas Revisi",
-    subtitle: "Jika terdapat kendala saat dijalankan",
-  },
-  {
-    icon: <Code2 className="w-4 h-4 sm:w-5 sm:h-5" />,
-    title: "Multi Bahasa Pemrograman",
-    subtitle: "Python, Java, JavaScript, PHP, dll",
-  },
-  {
-    icon: <FileText className="w-4 h-4 sm:w-5 sm:h-5" />,
-    title: "Bimbingan Skripsi & TA",
-    subtitle: "Dari konsep hingga sidang",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export function AcademicBanner() {
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      icon: <Lock className="w-4 h-4 sm:w-5 sm:h-5" />,
+      title: t("academic.features.1.title"),
+      subtitle: t("academic.features.1.subtitle") || undefined,
+    },
+    {
+      icon: <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />,
+      title: t("academic.features.2.title"),
+      subtitle: t("academic.features.2.subtitle"),
+    },
+    {
+      icon: <Wrench className="w-4 h-4 sm:w-5 sm:h-5" />,
+      title: t("academic.features.3.title"),
+      subtitle: t("academic.features.3.subtitle"),
+    },
+    {
+      icon: <Code2 className="w-4 h-4 sm:w-5 sm:h-5" />,
+      title: t("academic.features.4.title"),
+      subtitle: t("academic.features.4.subtitle"),
+    },
+    {
+      icon: <FileText className="w-4 h-4 sm:w-5 sm:h-5" />,
+      title: t("academic.features.5.title"),
+      subtitle: t("academic.features.5.subtitle"),
+    },
+  ];
+
   return (
     <section id="academic" className="py-16 sm:py-20 md:py-28 lg:py-32">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -70,16 +73,16 @@ export function AcademicBanner() {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-100 text-violet-700 text-xs sm:text-sm font-medium mb-4 sm:mb-6 font-[family-name:var(--font-khand-custom)]">
                 <GraduationCap className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                MAVEN Academic Support
+                {t("academic.badge")}
               </div>
 
               <h2 className="font-[family-name:var(--font-array-custom)] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wider mb-3 sm:mb-4">
-                Tuntaskan Proyek Kuliah IT{" "}
-                <span className="text-[#FFBA1F]">Tanpa Stres</span>
+                {t("academic.title1")}
+                <span className="text-[#FFBA1F]">{t("academic.title2")}</span>
               </h2>
 
               <p className="text-gray-600 font-[family-name:var(--font-khand-custom)] text-sm sm:text-base md:text-lg mb-4 sm:mb-6 leading-relaxed">
-                Bimbingan dan jasa pengerjaan tugas kuliah bidang IT, pembuatan basis data, proyek coding berbagai bahasa pemrograman (Python, Java, Web Dev, dll), hingga bantuan persiapan tugas akhir atau skripsi. Privasi dan kerahasiaan dijamin 100%.
+                {t("academic.subtitle")}
               </p>
 
               {/* 3D Rocket launch scene */}
@@ -105,9 +108,9 @@ export function AcademicBanner() {
               </motion.div>
 
               <MagneticWrapper>
-                <Button className="px-5 sm:px-8 py-4 sm:py-6 text-sm sm:text-base rounded-full bg-gray-900 text-white hover:bg-black hover:shadow-lg transition-all duration-300 font-[family-name:var(--font-khand-custom)]">
+                <Button className="px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm rounded-full bg-[#FFBA1F] text-black hover:bg-[#FFBA1F]/80 hover:shadow-lg transition-all duration-300 font-[family-name:var(--font-khand-custom)]">
                   <Link href="https://wa.me/6281936142855?text=Halo%20MAVEN%2C%20saya%20butuh%20bantuan%20tugas%20kuliah%20IT" target="_blank">
-                    Kirim Detail Tugas Kuliah Anda
+                    {t("academic.cta")}
                   </Link>
                 </Button>
               </MagneticWrapper>

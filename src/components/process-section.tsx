@@ -3,35 +3,38 @@
 import { motion } from "framer-motion";
 import { MessageSquare, Lightbulb, Code2, Rocket, ArrowRight } from "lucide-react";
 import Image from "next/image";
-
-const steps = [
-  {
-    icon: <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />,
-    step: "01",
-    title: "Konsultasi Gratis",
-    description: "Ceritakan kebutuhan bisnis Anda. Kami akan mendengarkan, menganalisis, dan memberikan rekomendasi solusi terbaik tanpa biaya konsultasi.",
-  },
-  {
-    icon: <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6" />,
-    step: "02",
-    title: "Perencanaan & Desain",
-    description: "Tim kami merancang wireframe, mockup, dan arsitektur sistem. Anda akan melihat preview sebelum pengerjaan dimulai.",
-  },
-  {
-    icon: <Code2 className="w-5 h-5 sm:w-6 sm:h-6" />,
-    step: "03",
-    title: "Pengembangan & Testing",
-    description: "Engineer kami mulai membangun sistem dengan standar kualitas tinggi, testing menyeluruh, dan progress report berkala.",
-  },
-  {
-    icon: <Rocket className="w-5 h-5 sm:w-6 sm:h-6" />,
-    step: "04",
-    title: "Launch & Dukungan",
-    description: "Proyek diluncurkan dengan dukungan teknis berkelanjutan. Kami memastikan semuanya berjalan lancar pasca-deployment.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export function ProcessSection() {
+  const { t } = useTranslation();
+
+  const steps = [
+    {
+      icon: <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />,
+      step: "01",
+      title: t("process.steps.1.title"),
+      description: t("process.steps.1.desc"),
+    },
+    {
+      icon: <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6" />,
+      step: "02",
+      title: t("process.steps.2.title"),
+      description: t("process.steps.2.desc"),
+    },
+    {
+      icon: <Code2 className="w-5 h-5 sm:w-6 sm:h-6" />,
+      step: "03",
+      title: t("process.steps.3.title"),
+      description: t("process.steps.3.desc"),
+    },
+    {
+      icon: <Rocket className="w-5 h-5 sm:w-6 sm:h-6" />,
+      step: "04",
+      title: t("process.steps.4.title"),
+      description: t("process.steps.4.desc"),
+    },
+  ];
+
   return (
     <section id="process" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-gray-50/50">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -53,13 +56,13 @@ export function ProcessSection() {
             >
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-50 text-violet-600 text-xs sm:text-sm font-medium font-[family-name:var(--font-khand-custom)] border border-violet-100 mb-4">
                 <span className="w-2 h-2 bg-violet-500 rounded-sm" />
-                Proses Kerja
+                {t("process.badge")}
               </span>
               <h2 className="font-[family-name:var(--font-array-custom)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-wider mb-3 sm:mb-4">
-                Bagaimana <span className="text-[#FFBA1F]">Kami Bekerja</span>?
+                {t("process.title1")}<span className="text-[#FFBA1F]">{t("process.title2")}</span>
               </h2>
               <p className="font-[family-name:var(--font-khand-custom)] text-base sm:text-lg md:text-xl text-gray-500 max-w-xl mx-auto lg:mx-0">
-                Empat langkah sederhana dari ide hingga produk jadi.
+                {t("process.subtitle")}
               </p>
             </motion.div>
 

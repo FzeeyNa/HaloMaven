@@ -1,35 +1,38 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Users, Target, Lightbulb, Zap, Shield, Clock } from "lucide-react";
 
-const stats = [
-  { value: "50+", label: "Proyek Selesai", icon: <Zap className="w-4 h-4" /> },
-  { value: "30+", label: "Klien Puas", icon: <Users className="w-4 h-4" /> },
-  { value: "24/7", label: "Support Aktif", icon: <Clock className="w-4 h-4" /> },
-  { value: "100%", label: "Data Aman", icon: <Shield className="w-4 h-4" /> },
-];
-
-const values = [
-  {
-    icon: <Target className="w-5 h-5" />,
-    title: "Fokus pada Solusi",
-    desc: "Kami tidak hanya menulis kode, tapi merancang solusi yang tepat guna untuk masalah bisnis klien.",
-  },
-  {
-    icon: <Lightbulb className="w-5 h-5" />,
-    title: "Inovasi Berkelanjutan",
-    desc: "Selalu mengadopsi teknologi terbaru (AI, Automation, Cloud) untuk memberikan keunggulan kompetitif.",
-  },
-  {
-    icon: <Shield className="w-5 h-5" />,
-    title: "Keamanan & Privasi",
-    desc: "Data klien dan mahasiswa dijaga kerahasiaannya. Privasi adalah prioritas utama kami.",
-  },
-];
-
 export function AboutSection() {
+  const { t } = useTranslation();
+
+  const stats = [
+    { value: "50+", label: t("about.stats.completed", "Proyek Selesai"), icon: <Zap className="w-4 h-4" /> },
+    { value: "30+", label: t("about.stats.clients", "Klien Puas"), icon: <Users className="w-4 h-4" /> },
+    { value: "24/7", label: t("about.stats.support", "Support Aktif"), icon: <Clock className="w-4 h-4" /> },
+    { value: "100%", label: t("about.stats.security", "Data Aman"), icon: <Shield className="w-4 h-4" /> },
+  ];
+
+  const values = [
+    {
+      icon: <Target className="w-5 h-5" />,
+      title: t("about.values.focus", "Fokus pada Solusi"),
+      desc: t("about.values.focus_desc", "Kami tidak hanya menulis kode, tapi merancang solusi yang tepat guna untuk masalah bisnis klien."),
+    },
+    {
+      icon: <Lightbulb className="w-5 h-5" />,
+      title: t("about.values.innovation", "Inovasi Berkelanjutan"),
+      desc: t("about.values.innovation_desc", "Selalu mengadopsi teknologi terbaru (AI, Automation, Cloud) untuk memberikan keunggulan kompetitif."),
+    },
+    {
+      icon: <Shield className="w-5 h-5" />,
+      title: t("about.values.security", "Keamanan & Privasi"),
+      desc: t("about.values.security_desc", "Data klien dan mahasiswa dijaga kerahasiaannya. Privasi adalah prioritas utama kami."),
+    },
+  ];
+
   return (
     <section id="about" className="relative py-16 sm:py-20 md:py-28 lg:py-32">
       {/* Maskot Kiri - Muncul dari kiri bawah */}
@@ -60,10 +63,10 @@ export function AboutSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-50 text-violet-600 text-xs sm:text-sm font-medium font-[family-name:var(--font-khand-custom)] border border-violet-100 mb-4">
             <span className="w-2 h-2 bg-[#FFBA1F] rounded-full" />
-            Tentang Kami
+            {t("about.badge", "Tentang Kami")}
           </span>
           <h2 className="font-[family-name:var(--font-array-custom)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-wider">
-            Mengenal <span className="gradient-text">MAVEN</span>
+            {t("about.title1", "Mengenal ")}<span className="gradient-text">{t("about.title2", "MAVEN")}</span>
           </h2>
         </motion.div>
 
@@ -118,13 +121,11 @@ export function AboutSection() {
           >
             <div>
               <h3 className="font-[family-name:var(--font-array-custom)] text-xl sm:text-2xl font-semibold tracking-wide mb-3 sm:mb-4">
-                Di Balik Jaringan Rekayasa Teknologi Serbaguna
+                {t("about.subtitle", "Di Balik Jaringan Rekayasa Teknologi Serbaguna")}
               </h3>
-              <p className="text-gray-600 font-[family-name:var(--font-khand-custom)] text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
-                <strong className="text-gray-900">MAVEN</strong> merupakan singkatan dari <em className="text-violet-600">Modern Applications & Versatile Engineering Network</em>. Lahir dari kecintaan kami pada dunia rekayasa perangkat lunak, nama ini juga memiliki arti harfiah sebagai &ldquo;Seorang Ahli&rdquo;. Kami adalah jaringan praktisi teknologi yang berdedikasi untuk merakit solusi digital yang andal bagi bisnis maupun kebutuhan akademis.
-              </p>
+              <p className="text-gray-600 font-[family-name:var(--font-khand-custom)] text-sm sm:text-base leading-relaxed mb-3 sm:mb-4" dangerouslySetInnerHTML={{ __html: t("about.p1", "<strong class='text-gray-900'>MAVEN</strong> merupakan singkatan dari <em class='text-violet-600'>Modern Applications & Versatile Engineering Network</em>. Lahir dari kecintaan kami pada dunia rekayasa perangkat lunak, nama ini juga memiliki arti harfiah sebagai &ldquo;Seorang Ahli&rdquo;. Kami adalah jaringan praktisi teknologi yang berdedikasi untuk merakit solusi digital yang andal bagi bisnis maupun kebutuhan akademis.") }} />
               <p className="text-gray-600 font-[family-name:var(--font-khand-custom)] text-sm sm:text-base leading-relaxed">
-                Kami percaya bahwa teknologi canggih tidak harus terasa rumit bagi pemilik usaha. Misi utama MAVEN adalah menjembatani kesenjangan teknis tersebut. Kami mengambil alih seluruh kerumitan baris kode dan pengelolaan infrastruktur digital, sehingga Anda dapat menghemat waktu, menekan biaya operasional, dan fokus sepenuhnya pada strategi pertumbuhan.
+                {t("about.p2", "Kami percaya bahwa teknologi canggih tidak harus terasa rumit bagi pemilik usaha. Misi utama MAVEN adalah menjembatani kesenjangan teknis tersebut. Kami mengambil alih seluruh kerumitan baris kode dan pengelolaan infrastruktur digital, sehingga Anda dapat menghemat waktu, menekan biaya operasional, dan fokus sepenuhnya pada strategi pertumbuhan.")}
               </p>
             </div>
 
@@ -157,7 +158,7 @@ export function AboutSection() {
           className="mb-6 sm:mb-8"
         >
           <h3 className="font-[family-name:var(--font-array-custom)] text-lg sm:text-xl md:text-2xl font-semibold tracking-wide text-center mb-6 sm:mb-8">
-            Nilai yang Kami <span className="text-[#FFBA1F]">Junjung</span>
+            {t("about.values_title1", "Nilai yang Kami ")}<span className="text-[#FFBA1F]">{t("about.values_title2", "Junjung")}</span>
           </h3>
         </motion.div>
 

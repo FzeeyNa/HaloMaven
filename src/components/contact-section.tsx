@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import { Send, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 export function ContactSection() {
+  const { t } = useTranslation();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -30,13 +33,13 @@ export function ContactSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-50 text-violet-600 text-xs sm:text-sm font-medium font-[family-name:var(--font-khand-custom)] border border-violet-100 mb-4">
             <span className="w-2 h-2 bg-[#FFBA1F] rounded-sm" />
-            Hubungi Kami
+            {t("contact.badge")}
           </span>
           <h2 className="font-[family-name:var(--font-array-custom)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-wider mb-3 sm:mb-4">
-            Mulai Langkah <span className="gradient-text">Digitalmu</span>
+            {t("contact.title1")}<span className="gradient-text">{t("contact.title2")}</span>
           </h2>
           <p className="font-[family-name:var(--font-khand-custom)] text-base sm:text-lg text-gray-500 max-w-xl mx-auto">
-            Konsultasikan masalah teknismu sekarang secara gratis.
+            {t("contact.subtitle")}
           </p>
         </motion.div>
 
@@ -50,48 +53,48 @@ export function ContactSection() {
           >
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-5">
               <div>
-                <label className="block text-sm font-semibold font-[family-name:var(--font-khand-custom)] text-gray-700 mb-1.5">Nama Lengkap</label>
+                <label className="block text-sm font-semibold font-[family-name:var(--font-khand-custom)] text-gray-700 mb-1.5">{t("contact.form.name")}</label>
                 <input
                   name="name"
                   type="text"
                   required
-                  placeholder="Masukkan nama Anda"
+                  placeholder={t("contact.form.name_placeholder")}
                   className="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:border-violet-300 focus:ring-2 focus:ring-violet-100 outline-none transition-all font-[family-name:var(--font-khand-custom)] text-sm sm:text-base"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold font-[family-name:var(--font-khand-custom)] text-gray-700 mb-1.5">Nama Bisnis / Instansi <span className="font-normal text-gray-400">(Opsional)</span></label>
+                <label className="block text-sm font-semibold font-[family-name:var(--font-khand-custom)] text-gray-700 mb-1.5">{t("contact.form.business")} <span className="font-normal text-gray-400">{t("contact.form.business_optional")}</span></label>
                 <input
                   name="business"
                   type="text"
-                  placeholder="Nama bisnis Anda"
+                  placeholder={t("contact.form.business_placeholder")}
                   className="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:border-violet-300 focus:ring-2 focus:ring-violet-100 outline-none transition-all font-[family-name:var(--font-khand-custom)] text-sm sm:text-base"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold font-[family-name:var(--font-khand-custom)] text-gray-700 mb-1.5">Layanan yang Dibutuhkan</label>
+                <label className="block text-sm font-semibold font-[family-name:var(--font-khand-custom)] text-gray-700 mb-1.5">{t("contact.form.service")}</label>
                 <select
                   name="service"
                   required
                   className="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:border-violet-300 focus:ring-2 focus:ring-violet-100 outline-none transition-all font-[family-name:var(--font-khand-custom)] text-sm sm:text-base"
                 >
-                  <option value="Website & Aplikasi Kustom">Website & Aplikasi Kustom</option>
-                  <option value="Website Template Ekonomis">Website Template Ekonomis</option>
-                  <option value="Sistem Manajemen Bisnis">Sistem Manajemen Bisnis</option>
-                  <option value="AI Automation">Otomatisasi Admin & AI Automation</option>
-                  <option value="Hosting & Perawatan">Hosting & Perawatan Web</option>
-                  <option value="Web Scraping">Pengumpulan Data / Web Scraping</option>
-                  <option value="Academic Support">Bantuan Proyek Kuliah IT</option>
-                  <option value="Lainnya">Lainnya</option>
+                  <option value={t("contact.form.service_options.1")}>{t("contact.form.service_options.1")}</option>
+                  <option value={t("contact.form.service_options.2")}>{t("contact.form.service_options.2")}</option>
+                  <option value={t("contact.form.service_options.3")}>{t("contact.form.service_options.3")}</option>
+                  <option value={t("contact.form.service_options.4")}>{t("contact.form.service_options.4")}</option>
+                  <option value={t("contact.form.service_options.5")}>{t("contact.form.service_options.5")}</option>
+                  <option value={t("contact.form.service_options.6")}>{t("contact.form.service_options.6")}</option>
+                  <option value={t("contact.form.service_options.7")}>{t("contact.form.service_options.7")}</option>
+                  <option value={t("contact.form.service_options.8")}>{t("contact.form.service_options.8")}</option>
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-semibold font-[family-name:var(--font-khand-custom)] text-gray-700 mb-1.5">Ceritakan Masalah atau Ide Anda</label>
+                <label className="block text-sm font-semibold font-[family-name:var(--font-khand-custom)] text-gray-700 mb-1.5">{t("contact.form.message")}</label>
                 <textarea
                   name="message"
                   required
                   rows={4}
-                  placeholder="Tuliskan kebutuhan Anda..."
+                  placeholder={t("contact.form.message_placeholder")}
                   className="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:border-violet-300 focus:ring-2 focus:ring-violet-100 outline-none transition-all font-[family-name:var(--font-khand-custom)] resize-none text-sm sm:text-base"
                 />
               </div>
@@ -99,7 +102,7 @@ export function ContactSection() {
                 type="submit"
                 className="flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-full bg-gray-900 text-white hover:bg-black hover:shadow-lg transition-all duration-300 font-[family-name:var(--font-khand-custom)] font-medium text-sm sm:text-base w-full sm:w-auto"
               >
-                <Send className="w-4 h-4" /> Kirim Formulir Konsultasi
+                <Send className="w-4 h-4" /> {t("contact.form.submit")}
               </button>
             </form>
           </motion.div>
@@ -113,7 +116,7 @@ export function ContactSection() {
             className="flex flex-col gap-4 sm:gap-5"
           >
             <p className="text-gray-600 font-[family-name:var(--font-khand-custom)] text-sm sm:text-base italic">
-              Atau hubungi kami langsung via jalur cepat:
+              {t("contact.info.direct")}
             </p>
 
             <Link
@@ -135,7 +138,7 @@ export function ContactSection() {
                 />
               </motion.div>
               <div>
-                <p className="text-xs sm:text-sm text-gray-400 font-[family-name:var(--font-khand-custom)]">WhatsApp Bisnis</p>
+                <p className="text-xs sm:text-sm text-gray-400 font-[family-name:var(--font-khand-custom)]">{t("contact.info.wa_label")}</p>
                 <p className="text-sm sm:text-base font-semibold text-gray-900 font-[family-name:var(--font-khand-custom)]">+62 819-3614-2855</p>
               </div>
               <ArrowRight className="w-4 h-4 text-gray-300 ml-auto group-hover:text-green-500 transition-colors" />
@@ -159,7 +162,7 @@ export function ContactSection() {
                 />
               </motion.div>
               <div>
-                <p className="text-xs sm:text-sm text-gray-400 font-[family-name:var(--font-khand-custom)]">Email Resmi</p>
+                <p className="text-xs sm:text-sm text-gray-400 font-[family-name:var(--font-khand-custom)]">{t("contact.info.email_label")}</p>
                 <p className="text-sm sm:text-base font-semibold text-gray-900 font-[family-name:var(--font-khand-custom)]">halomaven@gmail.com</p>
               </div>
               <ArrowRight className="w-4 h-4 text-gray-300 ml-auto group-hover:text-red-500 transition-colors" />
@@ -184,7 +187,7 @@ export function ContactSection() {
                 />
               </motion.div>
               <div>
-                <p className="text-xs sm:text-sm text-gray-400 font-[family-name:var(--font-khand-custom)]">Instagram</p>
+                <p className="text-xs sm:text-sm text-gray-400 font-[family-name:var(--font-khand-custom)]">{t("contact.info.ig_label")}</p>
                 <p className="text-sm sm:text-base font-semibold text-gray-900 font-[family-name:var(--font-khand-custom)]">@halo.maven</p>
               </div>
               <ArrowRight className="w-4 h-4 text-gray-300 ml-auto group-hover:text-pink-500 transition-colors" />
@@ -193,9 +196,9 @@ export function ContactSection() {
             {/* Testimonial / Trust */}
             <div className="mt-2 p-4 sm:p-5 rounded-xl bg-violet-50/50 border border-violet-100/50">
               <p className="text-gray-600 font-[family-name:var(--font-khand-custom)] text-xs sm:text-sm italic mb-2">
-                &ldquo;Respon cepat, hasil profesional, dan harga bersahabat. MAVEN beneran bantu bisnis kami go digital!&rdquo;
+                {t("contact.info.testimonial")}
               </p>
-              <p className="text-violet-600 font-[family-name:var(--font-khand-custom)] text-xs font-semibold">— Klien UMKM, Makassar</p>
+              <p className="text-violet-600 font-[family-name:var(--font-khand-custom)] text-xs font-semibold">{t("contact.info.testimonial_author")}</p>
             </div>
           </motion.div>
         </div>

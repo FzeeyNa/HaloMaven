@@ -2,35 +2,35 @@
 
 import { motion } from "framer-motion";
 import { Shield, Blocks, Grid3X3 } from "lucide-react";
-
-const pillars = [
-  {
-    icon: <Shield className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-    title: "Sang Ahli",
-    subtitle: "The Expert",
-    description:
-      "Solusi IT siap pakai. Anda cukup fokus membesarkan bisnis, biarkan Sang Ahli yang mengurus semua kerumitan teknis seperti server, error, dan sistem digital.",
-    pixelCount: 4,
-  },
-  {
-    icon: <Blocks className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-    title: "Sang Pembangun",
-    subtitle: "The Builder",
-    description:
-      "Kami merakit ide-ide bisnis Anda yang masih abstrak menjadi aplikasi modern dan sistem digital yang nyata serta fungsional.",
-    pixelCount: 6,
-  },
-  {
-    icon: <Grid3X3 className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
-    title: "Presisi Pixel",
-    subtitle: "The Details",
-    description:
-      "Layaknya menyusun pixel demi pixel, setiap baris kode dan alur kerja digital Anda kami bangun dengan ketelitian tingkat tinggi.",
-    pixelCount: 8,
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export function PhilosophySection() {
+  const { t } = useTranslation();
+
+  const pillars = [
+    {
+      icon: <Shield className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+      title: t("philosophy.pillars.1.title"),
+      subtitle: t("philosophy.pillars.1.subtitle"),
+      description: t("philosophy.pillars.1.description"),
+      pixelCount: 4,
+    },
+    {
+      icon: <Blocks className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+      title: t("philosophy.pillars.2.title"),
+      subtitle: t("philosophy.pillars.2.subtitle"),
+      description: t("philosophy.pillars.2.description"),
+      pixelCount: 6,
+    },
+    {
+      icon: <Grid3X3 className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+      title: t("philosophy.pillars.3.title"),
+      subtitle: t("philosophy.pillars.3.subtitle"),
+      description: t("philosophy.pillars.3.description"),
+      pixelCount: 8,
+    },
+  ];
+
   return (
     <section id="philosophy" className="py-16 sm:py-20 md:py-28 lg:py-32 relative">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -43,14 +43,14 @@ export function PhilosophySection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-50 text-violet-600 text-xs sm:text-sm font-medium font-[family-name:var(--font-khand-custom)] border border-violet-100 mb-4">
             <span className="w-2 h-2 bg-[#FFBA1F] rounded-sm" />
-            Filosofi Kami
+            {t("philosophy.badge")}
           </span>
           <h2 className="font-[family-name:var(--font-array-custom)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-wider mb-3 sm:mb-4">
-            Mengapa Memilih{" "}
-            <span className="gradient-text">MAVEN</span>?
+            {t("philosophy.title1")}
+            <span className="gradient-text">{t("philosophy.title2")}</span>
           </h2>
           <p className="font-[family-name:var(--font-khand-custom)] text-base sm:text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
-            Tiga pilar filosofi yang menjadi fondasi setiap solusi digital kami.
+            {t("philosophy.subtitle")}
           </p>
         </motion.div>
 

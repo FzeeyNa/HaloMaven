@@ -49,6 +49,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { I18nProvider } from "@/components/i18n-provider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,7 +61,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${array.variable} ${khand.variable} ${satoshi.variable} antialiased`}
       >
-        {children}
+        <I18nProvider>
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );

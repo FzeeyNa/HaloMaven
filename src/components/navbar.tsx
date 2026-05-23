@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
-const transition = { duration: 0.8, ease: [0.76, 0, 0.24, 1] };
+const transition  = { duration: 0.8, ease: [0.76, 0, 0.24, 1] as [number, number, number, number] };
 
 const animations = {
   opacity: {
@@ -36,24 +36,15 @@ const animations = {
     enter: (i: number[]) => ({
       y: 0,
       opacity: 1,
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: i[0] },
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as [number, number, number, number], delay: i[0] },
     }),
     exit: (i: number[]) => ({
       y: "100%",
       opacity: 0,
-      transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1], delay: i[1] },
+      transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] as [number, number, number, number], delay: i[1] },
     }),
-  },
+  }
 };
-
-const navigationLinks = [
-  { title: "Beranda", href: "#hero" },
-  { title: "Layanan", href: "#services" },
-  { title: "Tentang", href: "#about" },
-  { title: "Marketplace", href: "#marketplace" },
-  { title: "Akademik", href: "#academic" },
-  { title: "Kontak", href: "#contact" },
-];
 
 const animateChars = (word: string) => {
   return word.split("").map((char, i) => (
@@ -70,7 +61,7 @@ const animateChars = (word: string) => {
   ));
 };
 
-function NavigationMenu({ onClose }: { onClose: () => void }) {
+function NavigationMenu({ onClose, navigationLinks }: { onClose: () => void, navigationLinks: {title: string, href: string}[] }) {
   const [selectedLink, setSelectedLink] = useState({
     isActive: false,
     index: 0,
@@ -163,8 +154,21 @@ function NavigationMenu({ onClose }: { onClose: () => void }) {
   );
 }
 
+import { LanguageSwitcher } from "./language-switcher";
+import { useTranslation } from "react-i18next";
+
 export function Navbar() {
   const [isActive, setIsActive] = useState(false);
+  const { t } = useTranslation();
+
+  const navigationLinks = [
+    { title: t("navbar.home", "Beranda"), href: "#hero" },
+    { title: t("navbar.services", "Layanan"), href: "#services" },
+    { title: t("navbar.about", "Tentang"), href: "#about" },
+    { title: t("navbar.marketplace", "Marketplace"), href: "#marketplace" },
+    { title: t("navbar.academic", "Akademik"), href: "#academic" },
+    { title: t("navbar.contact", "Kontak"), href: "#contact" },
+  ];
 
   // Auto-close menu on scroll/wheel/touch
   useEffect(() => {
@@ -203,30 +207,33 @@ export function Navbar() {
             MAVEN
           </p>
         </Link>
-        <div
-          onClick={() => setIsActive(!isActive)}
-          className="navbar-el"
-        >
+        <div className="flex items-center gap-4 sm:gap-6">
+          <LanguageSwitcher />
           <div
-            className={`navbar-burger ${
-              isActive ? "navbar-burger-active" : ""
-            }`}
-          />
-          <div className="navbar-label">
-            <motion.p
-              variants={animations.opacity}
-              animate={!isActive ? "open" : "closed"}
-              className="text-base font-[family-name:var(--font-array-custom)]"
-            >
-              Menu
-            </motion.p>
-            <motion.p
-              variants={animations.opacity}
-              animate={isActive ? "open" : "closed"}
-              className="text-base font-[family-name:var(--font-array-custom)]"
-            >
-              Close
-            </motion.p>
+            onClick={() => setIsActive(!isActive)}
+            className="navbar-el"
+          >
+            <div
+              className={`navbar-burger ${
+                isActive ? "navbar-burger-active" : ""
+              }`}
+            />
+            <div className="navbar-label">
+              <motion.p
+                variants={animations.opacity}
+                animate={!isActive ? "open" : "closed"}
+                className="text-base font-[family-name:var(--font-array-custom)]"
+              >
+                {t("navbar.menu", "Menu")}
+              </motion.p>
+              <motion.p
+                variants={animations.opacity}
+                animate={isActive ? "open" : "closed"}
+                className="text-base font-[family-name:var(--font-array-custom)]"
+              >
+                {t("navbar.close", "Close")}
+              </motion.p>
+            </div>
           </div>
         </div>
       </div>
@@ -237,7 +244,7 @@ export function Navbar() {
         className="navbar-background"
       />
       <AnimatePresence mode="wait">
-        {isActive && <NavigationMenu onClose={() => setIsActive(false)} />}
+        {isActive && <NavigationMenu onClose={() => setIsActive(false)} navigationLinks={navigationLinks} />}
       </AnimatePresence>
     </div>
   );

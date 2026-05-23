@@ -56,7 +56,7 @@ export function TechArc() {
     <div className="w-full overflow-hidden flex justify-center pt-20 pb-20 relative">
       <PixelSnakeGrid />
       
-      <div className="flex gap-4 sm:gap-6 md:gap-8 lg:gap-10 min-w-max px-4 relative z-10">
+      <div className="flex gap-4 sm:gap-6 md:gap-8 lg:gap-10 min-w-max px-4 translate-y-5 sm:translate-y-6 lg:translate-y-8 relative z-10">
         {extendedIcons.map((Icon, i) => {
           return (
             <motion.div
@@ -74,9 +74,9 @@ export function TechArc() {
                   delay: -i * 0.12 
                 }}
                 whileHover={{ scale: 1.15 }}
-                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-white border-2 border-gray-200 rounded-sm shadow-[4px_4px_0px_0px_rgba(230,230,230,1)] hover:shadow-[6px_6px_0px_0px_rgba(124,58,237,0.3)] hover:border-violet-300 flex justify-center items-center text-gray-400 hover:text-violet-600 transition-all cursor-pointer"
+                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 bg-white border-2 border-gray-200 rounded-sm shadow-[4px_4px_0px_0px_rgba(230,230,230,1)] hover:shadow-[6px_6px_0px_0px_rgba(124,58,237,0.3)] hover:border-violet-300 flex justify-center items-center text-gray-400 hover:text-violet-600 transition-all cursor-pointer"
               >
-                <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" strokeWidth={1.5} />
+                <Icon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" strokeWidth={2} />
               </motion.div>
             </motion.div>
           );

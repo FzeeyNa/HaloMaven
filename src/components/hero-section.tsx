@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MagneticWrapper } from "@/components/ui/magnetic-wrapper";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { TechArc } from "./tech-arc";
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -16,7 +16,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
@@ -52,18 +52,22 @@ function PixelParticles() {
   );
 }
 
-const quickChecklist = [
-  "App Development",
-  "Business Systems",
-  "AI Automation",
-  "Hosting & Maintenance",
-  "Data Scraping",
-  "Academic IT Support",
-];
+import { useTranslation } from "react-i18next";
 
 export function HeroSection() {
+  const { t } = useTranslation();
+
+  const quickChecklist = [
+    t("hero.checklist.1", "App Development"),
+    t("hero.checklist.2", "Business Systems"),
+    t("hero.checklist.3", "AI Automation"),
+    t("hero.checklist.4", "Hosting & Maintenance"),
+    t("hero.checklist.5", "Data Scraping"),
+    t("hero.checklist.6", "Academic IT Support"),
+  ];
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-20 pb-48 md:pt-28 md:pb-56 pixel-grid overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center pt-20 pb-56 sm:pb-64 md:pt-28 md:pb-72 pixel-grid overflow-hidden">
       <PixelParticles />
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-center">
@@ -151,25 +155,27 @@ export function HeroSection() {
             <motion.div variants={itemVariants}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-50 text-violet-600 text-xs sm:text-sm font-medium font-[family-name:var(--font-khand-custom)] border border-violet-100">
                 <span className="w-2 h-2 bg-[#FFBA1F] rounded-sm" />
-                Versatile Engineering Network
+                {t("hero.badge", "Versatile Engineering Network")}
               </span>
             </motion.div>
 
             {/* Heading */}
             <motion.div variants={itemVariants}>
               <h1 className="font-[family-name:var(--font-array-custom)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-wider leading-tight">
-                Website{" "}
-                <span className="text-[#FFBA1F]">Impian Kamu?</span>
+                {t("hero.title1", "Website")}{" "}
+                <span className="text-[#FFBA1F]">{t("hero.title2", "Impian Kamu?")}</span>
               </h1>
               <p className="text-sm sm:text-base md:text-lg text-gray-500 font-[family-name:var(--font-khand-custom)] mt-2">
-                Kami bantu wujudkan <span className="text-violet-600 font-semibold">Solusi Digital</span> yang tepat untuk bisnis mu.
+                {t("hero.subtitle", "Kami bantu wujudkan ")}
+                <span className="text-violet-600 font-semibold">{t("hero.subtitle_highlight", "Solusi Digital")}</span>
+                {t("hero.subtitle2", " yang tepat untuk bisnis mu.")}
               </p>
             </motion.div>
 
             {/* Checklist - clean without dark box */}
             <motion.div variants={itemVariants} className="flex flex-col gap-2">
               <p className="text-xs sm:text-sm font-semibold font-[family-name:var(--font-khand-custom)] text-violet-600 uppercase tracking-wider">
-                Solusi IT Praktis
+                {t("hero.checklist.title", "Solusi IT Praktis")}
               </p>
               <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
                 {quickChecklist.map((item, i) => (
@@ -184,22 +190,38 @@ export function HeroSection() {
             {/* CTA */}
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 mt-1 sm:mt-2">
               <MagneticWrapper>
-                <Button className="px-5 sm:px-8 py-4 sm:py-6 text-sm sm:text-base rounded-full bg-gray-900 text-white font-semibold hover:bg-black hover:shadow-lg transition-all duration-300 font-[family-name:var(--font-khand-custom)]">
+                <Button className="px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm rounded-full bg-[#FFBA1F] text-black font-semibold hover:bg-[#FFBA1F]/80 hover:shadow-lg transition-all duration-300 font-[family-name:var(--font-khand-custom)]">
                   <Link href="#contact" className="flex items-center gap-2">
-                    Konsultasi Proyek Kustom <ArrowRight className="w-4 h-4" />
+                    {t("hero.cta", "Konsultasi Proyek Kustom")} <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>
               </MagneticWrapper>
               <MagneticWrapper>
-                <Button variant="outline" className="px-5 sm:px-8 py-4 sm:py-6 text-sm sm:text-base rounded-full border-violet-200 text-violet-600 hover:bg-violet-50 transition-colors font-[family-name:var(--font-khand-custom)]">
-                  <Link href="#services">Lihat Semua Layanan</Link>
+                <Button variant="outline" className="px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm rounded-full border-violet-200 text-violet-600 hover:bg-violet-50 transition-colors font-[family-name:var(--font-khand-custom)]">
+                  <Link href="#services">{t("hero.all_services", "Lihat Semua Layanan")}</Link>
                 </Button>
               </MagneticWrapper>
             </motion.div>
 
-            {/* Social */}
-            <motion.div variants={itemVariants} className="mt-1 sm:mt-2">
-              <p className="text-sm text-gray-400 font-[family-name:var(--font-khand-custom)]">@halo.maven</p>
+            {/* Social / Halo */}
+            <motion.div variants={itemVariants} className="mt-4 sm:mt-6">
+              <a href="#contact" className="inline-flex flex-col items-start group">
+                <div className="bg-white border-2 sm:border-[3px] border-gray-900 px-3 py-1 sm:px-4 sm:py-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:translate-x-[2px] group-hover:translate-y-[2px] group-hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200">
+                  <p className="text-sm sm:text-base font-bold font-[family-name:var(--font-array-custom)] text-gray-900 tracking-wider flex items-center gap-2">
+                    <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#FFBA1F] border border-gray-900 animate-pulse" />
+                    SAY "HALO!" TO US
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3 mt-3 ml-1">
+                  <span className="text-xs sm:text-sm font-semibold text-gray-500 font-[family-name:var(--font-khand-custom)] group-hover:text-violet-600 transition-colors">
+                    @halo.maven
+                  </span>
+                  <span className="w-1.5 h-1.5 bg-gray-300 rounded-sm" />
+                  <span className="text-xs sm:text-sm font-semibold text-gray-500 font-[family-name:var(--font-khand-custom)] group-hover:text-violet-600 transition-colors">
+                    halomaven@gmail.com
+                  </span>
+                </div>
+              </a>
             </motion.div>
           </motion.div>
         </div>

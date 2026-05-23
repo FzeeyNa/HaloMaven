@@ -1,70 +1,73 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Code2, Bot, Database, ServerCog, LayoutTemplate, MonitorSmartphone, GraduationCap, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-const services = [
-  {
-    icon: <Code2 className="w-6 h-6 sm:w-7 sm:h-7" />,
-    number: "01",
-    title: "Pembuatan Website & Aplikasi Kustom",
-    description: "Pembuatan website profil perusahaan (company profile), toko online, atau aplikasi mobile yang dibangun khusus dari nol sesuai dengan kebutuhan spesifik bisnismu.",
-    features: ["Full-stack Development", "Responsive Design", "Custom CMS", "Mobile App"],
-    highlight: true,
-  },
-  {
-    icon: <LayoutTemplate className="w-6 h-6 sm:w-7 sm:h-7" />,
-    number: "02",
-    title: "Website Berbasis Template (Ekonomis)",
-    description: "Solusi website siap pakai dengan proses pengerjaan super cepat (1–3 hari) dan harga ramah kantong. Sangat cocok untuk UMKM atau bisnis baru yang ingin segera tampil profesional di internet.",
-    features: ["Siap 1-3 Hari", "Hemat Biaya", "Profesional", "SEO Ready"],
-    highlight: false,
-  },
-  {
-    icon: <MonitorSmartphone className="w-6 h-6 sm:w-7 sm:h-7" />,
-    number: "03",
-    title: "Sistem Manajemen Bisnis",
-    description: "Pembuatan sistem kasir (POS), sistem pencatatan stok barang (inventaris), sistem absensi karyawan, hingga dasbor internal yang dapat diakses dari HP atau laptop kapan saja.",
-    features: ["Sistem Kasir POS", "Inventaris Stok", "Absensi Online", "Dashboard Realtime"],
-    highlight: false,
-  },
-  {
-    icon: <Bot className="w-6 h-6 sm:w-7 sm:h-7" />,
-    number: "04",
-    title: "Otomatisasi Admin & AI Automation",
-    description: "Mengubah pekerjaan admin yang manual menjadi otomatis menggunakan teknologi AI dan n8n. Contohnya: bot membalas Whatsapp secara otomatis, sinkronisasi data form ke WA, dan rekap data pesanan otomatis ke Excel.",
-    features: ["WhatsApp Bot", "n8n Automation", "Auto-reporting", "AI Integration"],
-    highlight: true,
-  },
-  {
-    icon: <ServerCog className="w-6 h-6 sm:w-7 sm:h-7" />,
-    number: "05",
-    title: "Hosting & Perawatan Web (Menyeluruh)",
-    description: "Menyediakan tempat penyimpanan data (server/hosting) sekaligus merawat website agar selalu aktif, aman dari peretas, rutin melakukan backup, dan memastikan sistem tidak lelet.",
-    features: ["24/7 Uptime", "SSL & Firewall", "Auto Backup", "Speed Optimization"],
-    highlight: false,
-  },
-  {
-    icon: <Database className="w-6 h-6 sm:w-7 sm:h-7" />,
-    number: "06",
-    title: "Pengumpulan Data & Riset Pasar (Web Scraping)",
-    description: "Layanan mengambil data dari internet secara otomatis dan massal (daftar harga kompetitor, ulasan produk, atau kontak bisnis) langsung diubah menjadi file Excel siap pakai untuk strategi bisnismu.",
-    features: ["Market Intelligence", "Price Monitoring", "Data Export Excel", "Analisis Kompetitor"],
-    highlight: false,
-  },
-  {
-    icon: <GraduationCap className="w-6 h-6 sm:w-7 sm:h-7" />,
-    number: "07",
-    title: "Bantuan Proyek & Tugas Kuliah IT",
-    description: "Bimbingan dan jasa pengerjaan tugas kuliah bidang IT, pembuatan basis data, pengerjaan proyek coding berbagai bahasa pemrograman (Python, Java, Web Dev, dll), hingga bantuan tugas akhir atau skripsi.",
-    features: ["Python & Java", "Web Dev", "Database", "Skripsi & TA"],
-    highlight: false,
-  },
-];
-
 export function ServicesSection() {
+  const { t } = useTranslation();
+
+  const services = [
+    {
+      icon: <Code2 className="w-6 h-6 sm:w-7 sm:h-7" />,
+      number: "01",
+      title: t("services.items.1.title", "Pembuatan Website & Aplikasi Kustom"),
+      description: t("services.items.1.desc", "Pembuatan website profil perusahaan (company profile), toko online, atau aplikasi mobile yang dibangun khusus dari nol sesuai dengan kebutuhan spesifik bisnismu."),
+      features: (t("services.items.1.features", { returnObjects: true }) as string[]) || ["Full-stack Development", "Responsive Design", "Custom CMS", "Mobile App"],
+      highlight: true,
+    },
+    {
+      icon: <LayoutTemplate className="w-6 h-6 sm:w-7 sm:h-7" />,
+      number: "02",
+      title: t("services.items.2.title", "Website Berbasis Template (Ekonomis)"),
+      description: t("services.items.2.desc", "Solusi website siap pakai dengan proses pengerjaan super cepat (1–3 hari) dan harga ramah kantong. Sangat cocok untuk UMKM atau bisnis baru yang ingin segera tampil profesional di internet."),
+      features: (t("services.items.2.features", { returnObjects: true }) as string[]) || ["Siap 1-3 Hari", "Hemat Biaya", "Profesional", "SEO Ready"],
+      highlight: false,
+    },
+    {
+      icon: <MonitorSmartphone className="w-6 h-6 sm:w-7 sm:h-7" />,
+      number: "03",
+      title: t("services.items.3.title", "Sistem Manajemen Bisnis"),
+      description: t("services.items.3.desc", "Pembuatan sistem kasir (POS), sistem pencatatan stok barang (inventaris), sistem absensi karyawan, hingga dasbor internal yang dapat diakses dari HP atau laptop kapan saja."),
+      features: (t("services.items.3.features", { returnObjects: true }) as string[]) || ["Sistem Kasir POS", "Inventaris Stok", "Absensi Online", "Dashboard Realtime"],
+      highlight: false,
+    },
+    {
+      icon: <Bot className="w-6 h-6 sm:w-7 sm:h-7" />,
+      number: "04",
+      title: t("services.items.4.title", "Otomatisasi Admin & AI Automation"),
+      description: t("services.items.4.desc", "Mengubah pekerjaan admin yang manual menjadi otomatis menggunakan teknologi AI dan n8n. Contohnya: bot membalas Whatsapp secara otomatis, sinkronisasi data form ke WA, dan rekap data pesanan otomatis ke Excel."),
+      features: (t("services.items.4.features", { returnObjects: true }) as string[]) || ["WhatsApp Bot", "n8n Automation", "Auto-reporting", "AI Integration"],
+      highlight: true,
+    },
+    {
+      icon: <ServerCog className="w-6 h-6 sm:w-7 sm:h-7" />,
+      number: "05",
+      title: t("services.items.5.title", "Hosting & Perawatan Web (Menyeluruh)"),
+      description: t("services.items.5.desc", "Menyediakan tempat penyimpanan data (server/hosting) sekaligus merawat website agar selalu aktif, aman dari peretas, rutin melakukan backup, dan memastikan sistem tidak lelet."),
+      features: (t("services.items.5.features", { returnObjects: true }) as string[]) || ["24/7 Uptime", "SSL & Firewall", "Auto Backup", "Speed Optimization"],
+      highlight: false,
+    },
+    {
+      icon: <Database className="w-6 h-6 sm:w-7 sm:h-7" />,
+      number: "06",
+      title: t("services.items.6.title", "Pengumpulan Data & Riset Pasar (Web Scraping)"),
+      description: t("services.items.6.desc", "Layanan mengambil data dari internet secara otomatis dan massal (daftar harga kompetitor, ulasan produk, atau kontak bisnis) langsung diubah menjadi file Excel siap pakai untuk strategi bisnismu."),
+      features: (t("services.items.6.features", { returnObjects: true }) as string[]) || ["Market Intelligence", "Price Monitoring", "Data Export Excel", "Analisis Kompetitor"],
+      highlight: false,
+    },
+    {
+      icon: <GraduationCap className="w-6 h-6 sm:w-7 sm:h-7" />,
+      number: "07",
+      title: t("services.items.7.title", "Bantuan Proyek & Tugas Kuliah IT"),
+      description: t("services.items.7.desc", "Bimbingan dan jasa pengerjaan tugas kuliah bidang IT, pembuatan basis data, pengerjaan proyek coding berbagai bahasa pemrograman (Python, Java, Web Dev, dll), hingga bantuan tugas akhir atau skripsi."),
+      features: (t("services.items.7.features", { returnObjects: true }) as string[]) || ["Python & Java", "Web Dev", "Database", "Skripsi & TA"],
+      highlight: false,
+    },
+  ];
+
   return (
     <section id="services" className="relative py-16 sm:py-20 md:py-28 lg:py-32 bg-gray-50/50 pixel-dots">
       {/* Maskot Kiri - Muncul dari kiri atas */}
@@ -94,13 +97,13 @@ export function ServicesSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-50 text-violet-600 text-xs sm:text-sm font-medium font-[family-name:var(--font-khand-custom)] border border-violet-100 mb-4">
             <span className="w-2 h-2 bg-[#FFBA1F] rounded-sm" />
-            7 Layanan Unggulan
+            {t("services.badge", "7 Layanan Unggulan")}
           </span>
           <h2 className="font-[family-name:var(--font-array-custom)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-wider mb-3 sm:mb-4">
-            Solusi <span className="text-[#FFBA1F]">Teknologi</span> untuk Skala Bisnis Anda
+            {t("services.title1", "Solusi ")}<span className="text-[#FFBA1F]">{t("services.title2", "Teknologi ")}</span>{t("services.title3", "untuk Skala Bisnis Anda")}
           </h2>
           <p className="font-[family-name:var(--font-khand-custom)] text-base sm:text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
-            Dari website hingga AI automation, kami menyediakan solusi end-to-end untuk kebutuhan digital bisnis Anda.
+            {t("services.subtitle", "Dari website hingga AI automation, kami menyediakan solusi end-to-end untuk kebutuhan digital bisnis Anda.")}
           </p>
         </motion.div>
 
@@ -195,7 +198,7 @@ export function ServicesSection() {
             href="#contact"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 text-white hover:bg-violet-700 transition-colors font-[family-name:var(--font-khand-custom)] text-sm sm:text-base"
           >
-            Diskusikan Kebutuhan Anda <ArrowRight className="w-4 h-4" />
+            {t("services.cta", "Diskusikan Kebutuhan Anda")} <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>
       </div>
