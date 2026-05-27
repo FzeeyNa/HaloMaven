@@ -32,13 +32,25 @@ export const metadata: Metadata = {
     "Urusan IT Bisnis Anda, Biar Ahlinya yang Selesai. MAVEN merakit website profesional, aplikasi kustom, dan sistem otomatisasi pintar untuk bisnis Anda.",
   keywords: [
     "software house",
+    "software house indonesia",
     "web development",
     "aplikasi kustom",
+    "custom software",
     "AI automation",
     "MAVEN",
     "jasa pembuatan website",
     "startup teknologi",
+    "IT consultant",
+    "digital transformation",
   ],
+  authors: [{ name: "MAVEN Team" }],
+  creator: "MAVEN",
+  publisher: "MAVEN",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     title: "MAVEN — Modern Applications & Versatile Engineering Network",
     description:
@@ -46,6 +58,24 @@ export const metadata: Metadata = {
     siteName: "MAVEN",
     locale: "id_ID",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MAVEN — Modern Applications & Versatile Engineering Network",
+    description:
+      "Urusan IT Bisnis Anda, Biar Ahlinya yang Selesai. MAVEN merakit website profesional, aplikasi kustom, dan sistem otomatisasi pintar.",
+    creator: "@maventech",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

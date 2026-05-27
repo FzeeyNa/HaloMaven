@@ -25,6 +25,28 @@ export default function Home() {
     <>
       {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
       <main className="min-h-screen bg-white overflow-x-hidden">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "MAVEN",
+              url: "https://maventech.id",
+              logo: "https://maventech.id/icon.png",
+              description: "Urusan IT Bisnis Anda, Biar Ahlinya yang Selesai. MAVEN merakit website profesional, aplikasi kustom, dan sistem otomatisasi pintar untuk bisnis Anda.",
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+62", // Replace with real phone number when ready
+                contactType: "customer service"
+              },
+              sameAs: [
+                "https://github.com/maventech",
+                "https://instagram.com/maventech"
+              ]
+            })
+          }}
+        />
         <Navbar />
         <HeroSection />
         <PhilosophySection />
