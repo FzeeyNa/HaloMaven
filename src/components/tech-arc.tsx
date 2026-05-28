@@ -37,11 +37,13 @@ function PixelSnakeGrid() {
         {grid.map((row, r) => (
           <div key={r} className="flex gap-2 sm:gap-4 md:gap-6">
             {row.map((cell, c) => (
-              <motion.div 
+              <div 
                 key={`${r}-${c}`} 
-                animate={{ y: cell ? [-3, 3, -3] : 0 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: (r+c)*0.2 }}
                 className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 ${cell ? 'bg-gray-200 border-[0.5px] border-gray-300 shadow-[2px_2px_0px_0px_rgba(200,200,200,1)]' : 'bg-transparent'}`} 
+                style={cell ? {
+                  animation: `pixelFloat 4s ease-in-out infinite`,
+                  animationDelay: `${(r + c) * 0.2}s`
+                } : undefined}
               />
             ))}
           </div>
