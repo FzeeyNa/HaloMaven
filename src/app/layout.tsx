@@ -59,15 +59,7 @@ export const metadata: Metadata = {
     locale: "id_ID",
     type: "website",
   },
-  icons: {
-    icon: [
-      { url: "/images/logo-m.png", type: "image/png" }
-    ],
-    shortcut: ["/images/logo-m.png"],
-    apple: [
-      { url: "/images/logo-m.png", type: "image/png" }
-    ],
-  },
+
   twitter: {
     card: "summary_large_image",
     title: "MAVEN — Modern Applications & Versatile Engineering Network",
