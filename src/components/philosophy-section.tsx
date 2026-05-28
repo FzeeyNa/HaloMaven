@@ -4,6 +4,44 @@ import { motion } from "framer-motion";
 import { Shield, Blocks, Grid3X3 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+function PixelSnakeGrid() {
+  const baseGrid = [
+    [0,0,0,0,0,1,1,0,0,0,0,0,0,0],
+    [0,0,1,0,0,1,0,0,0,0,0,0,0,0],
+    [0,0,1,1,0,0,1,1,0,0,0,1,0,0],
+    [0,0,0,1,0,0,0,1,0,0,1,1,0,0],
+    [0,0,0,0,0,0,1,1,0,1,1,0,0,0],
+    [0,0,0,0,1,1,1,0,0,1,0,0,0,0],
+    [0,0,0,0,1,0,0,0,1,1,0,0,0,0],
+  ];
+
+  const grid = baseGrid.map(row => [
+    ...row, ...row, ...row, ...row, 
+    ...row, ...row, ...row, ...row
+  ]);
+
+  return (
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.25] pointer-events-none z-0 transform-origin-center min-w-max">
+      <div className="flex flex-col gap-2 sm:gap-4 md:gap-6">
+        {grid.map((row, r) => (
+          <div key={r} className="flex gap-2 sm:gap-4 md:gap-6">
+            {row.map((cell, c) => (
+              <div 
+                key={`${r}-${c}`} 
+                className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 ${cell ? 'bg-gray-200 border-[0.5px] border-gray-300 shadow-[2px_2px_0px_0px_rgba(200,200,200,1)]' : 'bg-transparent'}`} 
+                style={cell ? {
+                  animation: `pixelFloat 4s ease-in-out infinite`,
+                  animationDelay: `${(r + c) * 0.2}s`
+                } : undefined}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function PhilosophySection() {
   const { t } = useTranslation();
 
@@ -32,8 +70,9 @@ export function PhilosophySection() {
   ];
 
   return (
-    <section id="philosophy" className="py-16 sm:py-20 md:py-28 lg:py-32 relative">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+    <section id="philosophy" className="py-16 sm:py-20 md:py-28 lg:py-32 relative overflow-hidden">
+      <PixelSnakeGrid />
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +102,7 @@ export function PhilosophySection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
               whileHover={{ y: -6 }}
-              className="group relative bg-white rounded-2xl border border-gray-100 p-5 sm:p-6 md:p-8 hover:border-violet-200 hover:shadow-lg hover:shadow-violet-50 transition-all duration-300"
+              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 p-5 sm:p-6 md:p-8 hover:border-violet-200 hover:shadow-lg hover:shadow-violet-50 transition-all duration-300"
             >
               {/* Pixel decoration */}
               <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex gap-1 opacity-20 group-hover:opacity-40 transition-opacity">

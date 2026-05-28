@@ -6,8 +6,6 @@ import { MagneticWrapper } from "@/components/ui/magnetic-wrapper";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { TechArc } from "./tech-arc";
-
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -227,10 +225,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Tech Arc Element at the bottom */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <TechArc />
-      </div>
     </section>
   );
 }
